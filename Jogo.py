@@ -2,6 +2,7 @@ andarilho = 0
 armador = 0
 verdadeiro = 0
 entrada = 0
+podres = []
 
 def menu():
     print('------------------------------')
@@ -39,7 +40,32 @@ def armado():
         andarilho -= 1
     else:
         print("opçao invalida, tente novamente ")
-
+def plantar_armadilhas():
+    global armador
+    matriz = [
+        ['A','A','A','A','A'],
+        ['A','A','A','A','A'],
+        ['A','A','A','A','A'],
+        ['A','A','A','A','A'],
+        ['A','A','A','A','A']
+    ]
+    print(matriz)
+    print(f'jogador {armador}, voce pode esconder ate 3 ovos podres por linha no terreno.')
+    ovos = 0
+    contador = 0
+    while ovos < 15:
+        for linha in range(1,6):
+            print(f'em qual coluna da linha {linha} voce quer esconder ovos podres?')
+            while contador < 3:
+                entrada_ovos = int(input())
+                podres.append(entrada_ovos)
+                print('deseja colocar mais algum nessa coluna? [S/N]')
+                a = input().upper()
+                if a == 'S':
+                    contador += 1
+                elif a == 'N':
+                    contador += 2
+        print(podres)
 while verdadeiro == 0:
     menu()
     validar_entrada()
@@ -49,7 +75,7 @@ while verdadeiro == 0:
     elif entrada == 1:
         armado()
     elif entrada == 2:
-        print("Em Desenvolvimento!")
+        plantar_armadilhas()
     elif entrada == 3:
         print("Em Desenvolvimento!")
     elif entrada == 4:
