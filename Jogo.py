@@ -29,43 +29,46 @@ def armado():
         andarilho += 2
         print(f"O armador é o jogador: {armador}")
         print(f"O andarilho é o jogador: {andarilho}")
-        armador -= 1
-        andarilho -= 2
+
     elif opcaoJogador == 2:
         armador += 2
         andarilho += 1
         print(f"O armador é o jogador: {armador}")
         print(f"O andarilho é o jogador: {andarilho}")
-        armador -= 2
-        andarilho -= 1
+
     else:
         print("opçao invalida, tente novamente ")
+
 def plantar_armadilhas():
     global armador
-    matriz = [
-        ['A','A','A','A','A'],
-        ['A','A','A','A','A'],
-        ['A','A','A','A','A'],
-        ['A','A','A','A','A'],
-        ['A','A','A','A','A']
-    ]
-    print(matriz)
-    print(f'jogador {armador}, voce pode esconder ate 3 ovos podres por linha no terreno.')
-    ovos = 0
-    contador = 0
-    while ovos < 15:
-        for linha in range(1,6):
-            print(f'em qual coluna da linha {linha} voce quer esconder ovos podres?')
-            while contador < 3:
-                entrada_ovos = int(input())
-                podres.append(entrada_ovos)
-                print('deseja colocar mais algum nessa coluna? [S/N]')
-                a = input().upper()
-                if a == 'S':
-                    contador += 1
-                elif a == 'N':
-                    contador += 2
-        print(podres)
+    matriz = []
+    ovos = []
+    for i in range(1,6):
+        linha = []
+        for j in range(1,6):
+            linha.append('A')
+        matriz.append(linha)
+    for linha in matriz:
+        print(linha)
+    print(f'Jogador {armador}, voce pode esconder até 3 ovos podres por linha do terreno.')
+    for x in range(1,6):
+        for k in range(3):
+            ovos_podres = int(input(f'Em qual coluna da linha {x} voce quer esconder os ovos podres? [1 a 5]'))
+            ovos.append([{'coluna' : x, 'ovos' : ovos_podres}])
+            print('Deseja adicionar mais algum ovo nessa linha? [S/N]')
+            ovos_linha = input().upper()
+            if ovos_linha == 'S':
+                continue
+            elif ovos_linha == 'N':
+                break
+    for linha in matriz:
+        print(linha)
+    print(ovos)
+
+
+
+
+
 while verdadeiro == 0:
     menu()
     validar_entrada()
