@@ -3,7 +3,10 @@ armador = 0
 verdadeiro = 0
 entrada = 0
 podres = []
-
+matriz = []
+def placar():
+    pontuacao1 = 0
+    pontuacao2 = 0
 def menu():
     print('------------------------------')
     print(''' 1 - Definir Armador         
@@ -38,35 +41,36 @@ def armado():
 
     else:
         print("opçao invalida, tente novamente ")
-
 def plantar_armadilhas():
-    global armador
+    global armador, matriz
     matriz = []
-    ovos = []
-    for i in range(1,6):
-        linha = []
-        for j in range(1,6):
-            linha.append('A')
+    for i in range(5):
+        linha = ['A'] * 5
         matriz.append(linha)
-    for linha in matriz:
-        print(linha)
     print(f'Jogador {armador}, voce pode esconder até 3 ovos podres por linha do terreno.')
-    for x in range(1,6):
-        for k in range(3):
-            ovos_podres = int(input(f'Em qual coluna da linha {x} voce quer esconder os ovos podres? [1 a 5]'))
-            ovos.append([{'coluna' : x, 'ovos' : ovos_podres}])
-            print('Deseja adicionar mais algum ovo nessa linha? [S/N]')
-            ovos_linha = input().upper()
-            if ovos_linha == 'S':
-                continue
-            elif ovos_linha == 'N':
-                break
+    for x in range(5):
+        print(f'\nLinha {x + 1}:')
+        ovos_na_linha = 0
+        while ovos_na_linha < 3:
+            try:
+                coluna = int(input(f'Digite a coluna para esconder o ovo podre {ovos_na_linha + 1} [1-5]: ')) - 1
+                if coluna < 0 or coluna > 4:
+                    print('Coluna inválida! Digite um valor entre 1 e 5.')
+                    continue
+                if matriz[x][coluna] == 'O':
+                    print('Já existe um ovo podre nesta posição!')
+                    continue
+                matriz[x][coluna] = 'O'
+                ovos_na_linha += 1
+                if ovos_na_linha < 3:
+                    continuar = input('Deseja adicionar mais algum ovo nesta linha? [S/N] ').upper()
+                    if continuar != 'S':
+                        break
+            except ValueError:
+                print('Por favor, digite um número válido.')
+    print('\nTerreno com as armadilhas:')
     for linha in matriz:
         print(linha)
-    print(ovos)
-
-
-
 
 
 while verdadeiro == 0:
@@ -80,6 +84,26 @@ while verdadeiro == 0:
     elif entrada == 2:
         plantar_armadilhas()
     elif entrada == 3:
-        print("Em Desenvolvimento!")
+        print(' ')
+        for divisor in range(99):
+            print('=' * divisor)
+        espacos = [1, 2, 3, 4, 5]
+        for linha in matriz:
+            print(f'São validos os espaços: [{espacos}]')
+            espacos.clear()
+            print('Escolha sabiamente um dos espaços validos')
+            escolha_espaco = int(input())
+            if linha[escolha_espaco -1] == 'A':
+                if escolha_espaco > 1:
+                    espacos.append(escolha_espaco - 1)
+                espacos.append(escolha_espaco)
+                if escolha_espaco < 5:
+                    espacos.append(escolha_espaco + 1)
+                continue
+            elif linha[escolha_espaco -1] == 'O':
+                print("Eca! Voce pisou em um ovo podre e perdeu")
+                break
+            elif len(espacos) == 0:
+                print("Voce atravessou o terreno sem cair em nenhuma armadilha! Parabens!")
     elif entrada == 4:
         print("Em Desenvolvimento!")
