@@ -1,3 +1,4 @@
+jogadores = {'jogadores':[1,2], 'placar' : [0, 0]}
 andarilho = 0
 armador = 0
 verdadeiro = 0
@@ -5,8 +6,10 @@ entrada = 0
 podres = []
 matriz = []
 def placar():
-    pontuacao1 = 0
-    pontuacao2 = 0
+    pontuacao1 = jogadores['placar'][0]
+    pontuacao2 = jogadores['placar'][1]
+    print("jogador 1:",pontuacao2)
+    print("jogador 2:",pontuacao1)
 def menu():
     print('------------------------------')
     print(''' 1 - Definir Armador         
@@ -28,14 +31,14 @@ def armado():
     print('Qual jogador plantará as armadilhas? [1 ou 2]')
     opcaoJogador = int(input())
     if opcaoJogador == 1:
-        armador += 1
-        andarilho += 2
+        armador = jogadores['jogadores'][0]
+        andarilho = jogadores['jogadores'][1]
         print(f"O armador é o jogador: {armador}")
         print(f"O andarilho é o jogador: {andarilho}")
 
     elif opcaoJogador == 2:
-        armador += 2
-        andarilho += 1
+        armador = jogadores['jogadores'][1]
+        andarilho = jogadores['jogadores'][0]
         print(f"O armador é o jogador: {armador}")
         print(f"O andarilho é o jogador: {andarilho}")
 
@@ -102,8 +105,10 @@ while verdadeiro == 0:
                 continue
             elif linha[escolha_espaco -1] == 'O':
                 print("Eca! Voce pisou em um ovo podre e perdeu")
+                jogadores['placar'][armador] += 1
                 break
-            elif len(espacos) == 0:
-                print("Voce atravessou o terreno sem cair em nenhuma armadilha! Parabens!")
+
+            print("Parabens, Voce atravessou o percurso tranquilamente!")
+            jogadores['placar'][andarilho] += 1
     elif entrada == 4:
-        print("Em Desenvolvimento!")
+        placar()
