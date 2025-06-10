@@ -1,7 +1,17 @@
+import time
+
+
 def menu():
-def campo():
-    matriz = [ 
-        ['A','A','A','A','A',' ',' ','A','A','A','A','A'],
+    print('''9 - Para abrir esse menu
+8 - Subir
+2- Descer
+4 - Ir para esquerda
+6 - Ir para direta
+5 - Abrir Pokedex
+0 - Sair do Jogo''')
+l = 19
+c = 6
+campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
         ['A',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','A'],
         ['A',' ',' ',' ','A',' ',' ',' ',' ',' ',' ','A'],    
         ['A','E','E','E','A','E','E','E','G','G','G','A'],    
@@ -20,4 +30,41 @@ def campo():
         ['A','E','E',' ',' ','E','E','E','E','E','E','A'],
         ['A',' ','G','G','G','G',' ',' ','G','G','G','A'],
         ['A','G','G','G',' ',' ',' ','G','G','A','A','A'],
-        ['A','A','A','A','A','A','G','A','A','A','A','A'],]
+        ['A','A','A','A','A','A','G','A','A','A','A','A']]
+
+pokemons = [ 'Ratata', 'Pidgey', 'Weedle', 'Caterpie', 'Paras', 'Charmander', 'Bulbasaur', 'Squirtle', 'Pikachu' , 'Evee' ]
+jogador = campo[19][6]
+print("entrando na rota 1")
+time.sleep(3)
+while True:
+    menu()
+    entrada = int(input())
+    if entrada == 9:
+        continue
+    elif entrada == 8:
+        l -=1
+        jogador = campo[l][c]
+        print(jogador)
+        print("-----")
+    elif entrada == 2:
+        l += 1
+        jogador = campo[l][c]
+        print(jogador)
+        print("-----")
+    elif entrada == 4:
+        c -= 1
+        jogador = campo[l][c]
+        print(jogador)
+        print("-----")
+    elif entrada == 6:
+        c += 1
+        jogador= campo[l][c]
+        print(jogador)
+        print("-----")
+    elif entrada == 5:
+        print("5")
+    elif entrada == 0:
+        break
+    else:
+        print("Entrada Invalida, Tente Novamente")
+        continue
