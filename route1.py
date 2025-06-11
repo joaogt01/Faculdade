@@ -2,6 +2,7 @@ import time
 
 
 def menu():
+    print("--------------------")
     print('''9 - Para abrir esse menu
 8 - Subir
 2- Descer
@@ -9,6 +10,7 @@ def menu():
 6 - Ir para direta
 5 - Abrir Pokedex
 0 - Sair do Jogo''')
+    print("--------------------")
 l = 19
 c = 6
 campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
@@ -37,6 +39,7 @@ jogador = campo[19][6]
 print("entrando na rota 1")
 time.sleep(3)
 while True:
+    print(f"Sua posição no mapa é: linha {l}, coluna {c}")
     menu()
     entrada = int(input())
     if entrada == 9:
