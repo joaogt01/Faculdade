@@ -1,6 +1,5 @@
+import random
 import time
-
-
 def menu():
     print("--------------------")
     print('''9 - Para abrir esse menu
@@ -11,6 +10,16 @@ def menu():
 5 - Abrir Pokedex
 0 - Sair do Jogo''')
     print("--------------------")
+def grama(a):
+    if a == "G":
+        pokemon_selvagem = random.randint(0,1)
+        if pokemon_selvagem == 1:
+            print("Um pokemon selvagem apareceu!\nCapturar ou correr? [1-Capturar ou 2-Correr]")
+            cap_correr = int(input())
+            if cap_correr == 1:
+                pokedex.append(random.choice(pokemons))
+
+
 l = 19
 c = 6
 campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
@@ -35,6 +44,7 @@ campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
         ['A','A','A','A','A','A','G','A','A','A','A','A']]
 
 pokemons = [ 'Ratata', 'Pidgey', 'Weedle', 'Caterpie', 'Paras', 'Charmander', 'Bulbasaur', 'Squirtle', 'Pikachu' , 'Evee' ]
+pokedex = []
 jogador = campo[19][6]
 print("entrando na rota 1")
 time.sleep(3)
@@ -45,24 +55,40 @@ while True:
     if entrada == 9:
         continue
     elif entrada == 8:
-        l -=1
+        l -= 1
         jogador = campo[l][c]
-        print(jogador)
+        if jogador == "A":
+            print("Bump!")
+            l += 1
+        else:
+            print(jogador)
         print("-----")
     elif entrada == 2:
         l += 1
         jogador = campo[l][c]
-        print(jogador)
-        print("-----")
+        if jogador == "A":
+            print("Bump!")
+            l -= 1
+        else:
+            print(jogador)
+            print("-----")
     elif entrada == 4:
         c -= 1
         jogador = campo[l][c]
-        print(jogador)
+        if jogador == "A":
+            print("Bump!")
+            c+=1
+        else:
+            print(jogador)
         print("-----")
     elif entrada == 6:
         c += 1
         jogador= campo[l][c]
-        print(jogador)
+        if jogador == "A":
+            print("Bump!")
+            c-=1
+        else:
+            print(jogador)
         print("-----")
     elif entrada == 5:
         print("5")
