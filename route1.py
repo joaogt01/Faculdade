@@ -1,11 +1,13 @@
 import random
 import time
 def menu_pokedex():
+    print("-------------------")
     print('''Digite
 1 para Listar Detalhes
 2 para Apagar Registro
 0 para voltar ao menu principal
 Escolha uma ação:''')
+    print("-------------------")
 
 def menu():
     print("--------------------")
@@ -71,13 +73,15 @@ pokedex = []
 
 jogador = campo[19][6]
 print("entrando na rota 1")
-time.sleep(3)
+time.sleep(2)
 while True:
     print(f"Sua posição no mapa é: linha {l}, coluna {c}")
+    time.sleep(1)
     menu()
     entrada = int(input())
     if entrada == 9:
         continue
+
     elif entrada == 8:
         l -= 1
         jogador = campo[l][c]
@@ -94,7 +98,7 @@ while True:
             l += 1
         else:
             print(jogador)
-        print("-----")
+
     elif entrada == 2:
         l += 1
         jogador = campo[l][c]
@@ -109,6 +113,7 @@ while True:
         else:
             print(jogador)
             print("-----")
+
     elif entrada == 4:
         c -= 1
         jogador = campo[l][c]
@@ -119,7 +124,8 @@ while True:
             grama(jogador)
         else:
             print(jogador)
-        print("-----")
+            print("-----")           
+
     elif entrada == 6:
         c += 1
         jogador= campo[l][c]
@@ -130,11 +136,11 @@ while True:
             grama(jogador)
         else:
             print(jogador)
-        print("-----")
+
     elif entrada == 5:
         print("Pokémons capturados:")
         for p in pokedex:
-            print(f"- {p['pokemon']}")
+            print(f"{p['pokemon']}")
         while True:
             menu_pokedex()
             opcao_pokedex = int(input())
@@ -146,7 +152,7 @@ while True:
                     if registro['pokemon'] == consultar_atributo:
                         print(registro['atributos'])
             elif opcao_pokedex == 2:
-                consultar_atributo = input("Digite o pokemon a ser apagado:").lower()
+                consultar_atributo = input("Digite o pokemon a ter o registro apagado:").lower()
                 for registro in pokedex:
                     if registro['pokemon'] == consultar_atributo:
                         pokedex = [p for p in pokedex if p['pokemon'] != consultar_atributo]
