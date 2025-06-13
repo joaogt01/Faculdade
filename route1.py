@@ -8,7 +8,6 @@ def menu_pokedex():
 0 para voltar ao menu principal
 Escolha uma ação:''')
     print("-------------------")
-
 def menu():
     print("--------------------")
     print('''9 - Para abrir esse menu
@@ -66,12 +65,10 @@ campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
         ['A',' ','G','G','G','G',' ',' ','G','G','G','A'],
         ['A','G','G','G',' ',' ',' ','G','G','A','A','A'],
         ['A','A','A','A','A','A','G','A','A','A','A','A']]
-
-pokemons = [ 'ratata', 'pidgey', 'weedle', 'caterpie', 'paras', 'charmander', 'bulbasaur', 'squirtle', 'pikachu' , 'evee' ]
+pokemons = ['ratata', 'pidgey', 'weedle', 'caterpie', 'paras', 'charmander', 'bulbasaur', 'squirtle', 'pikachu' , 'evee']
 pokedex = []
-
-
 jogador = campo[19][6]
+
 print("entrando na rota 1")
 time.sleep(2)
 while True:
