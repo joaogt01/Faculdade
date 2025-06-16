@@ -71,6 +71,8 @@ jogador = campo[19][6]
 
 print("entrando na rota 1")
 time.sleep(2)
+for linha in campo:
+    print(linha)
 while True:
     print(f"Sua posição no mapa é: linha {l}, coluna {c}")
     time.sleep(1)
