@@ -43,6 +43,10 @@ def atributo():
     sp_def = "Sp def",lista_atributos[4]
     speed = "Speed",lista_atributos[5]
     return hp,atk,deff,sp_atk,sp_def,speed
+def verificacao(a):
+    if 0> a > 19:
+        print("Fim de Jogo!")
+        Partida = False
 l = 19
 c = 6
 campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
@@ -68,12 +72,12 @@ campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
 pokemons = ['ratata', 'pidgey', 'weedle', 'caterpie', 'paras', 'charmander', 'bulbasaur', 'squirtle', 'pikachu' , 'evee']
 pokedex = []
 jogador = campo[19][6]
-
+Partida = True
 print("entrando na rota 1")
 time.sleep(2)
 for linha in campo:
     print(linha)
-while True:
+while Partida  == True:
     print(f"Sua posição no mapa é: linha {l}, coluna {c}")
     time.sleep(1)
     menu()
@@ -89,9 +93,7 @@ while True:
             l += 1
         elif jogador == "G":
             grama(jogador)
-        elif l < 0 or l > 19:
-            print("Fim de jogo")
-            break
+            verificacao(l)
         elif jogador == "E" and campo[l + 1][c] != "E":
             print("Bump!")
             l += 1
@@ -106,9 +108,7 @@ while True:
             l -= 1
         elif jogador == "G":
             grama(jogador)
-        elif l < 0 or l > 19:
-            print("Fim de jogo")
-            break
+            verificacao(l)
         else:
             print(jogador)
             print("-----")
