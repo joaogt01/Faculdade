@@ -12,14 +12,13 @@ def verificar_jogador():
         print("Configure os personagens antes de iniciar a partida")
     elif personagens == 1:
         return
-def atributos():
+def gerar_atributos():
     m = random.randint(10,20)
     a = random.randint(30,120)
     d = random.choice([1,-1])
     p = random.randint(0,69)
     v = random.randint(0,5)
-    atributo = {'municao': m , 'angulo' : a, 'direcao' : d ,'posicao': p , 'velocidade' : v ,'combustivel': 10}
-    return atributo
+    return m, a, d, p, v
 def menu():
     print('''VERMES DE GUERRA
 Escolha uma das opções abaixo:
@@ -41,18 +40,51 @@ def mapa():
     matriz[3] = [''] * c
     for linha in matriz:
         print(linha)
+def jogadores():
+    nick1 = input("Digite o nick do jogador 1: ")
+    player1['nick'] = nick1
+    nick2 = input("Digite o nick do jogador 2: ")
+    player2['nick'] = nick2
+    atributos_1 = gerar_atributos()
+    atributos_2 = [list(gerar_atributos())]
+    player1['municao'] = atributos_1[0]
+    player1['angulo'] = atributos_1[0][1]
+    player1['direcao'] = atributos_1[0][2]
+    player1['posicao'] = atributos_1[0][3]
+    player1['velocidade'] = atributos_1[0][4]
+    player1['gasolina'] = 10
+    print(player1)
+    player2['municao'] = atributos_2[0][0]
+    player2['angulo'] = atributos_2[0][1]
+    player2['direcao'] = atributos_2[0][2]
+    player2['posicao'] = atributos_2[0][3]
+    player2['velocidade'] = atributos_2[0][4]
+    player2['gasolina'] = 10
 personagens = 0
+player1 = {
+    'nick': '',
+    'municao' : '',
+    'angulo' : '',
+    'direcao': '',
+    'posicao' : '',
+    'velocidade' : '',
+    'gasolina' : ''
+}
+player2 = {
+    'nick': '',
+    'municao' : '',
+    'angulo' : '',
+    'direcao': '',
+    'posicao' : '',
+    'velocidade' : '',
+    'gasolina' : ''
+}
 laco_jogo = True
 while laco_jogo == True:
     menu()
     opcao = int(input())
     if opcao == 1:
-        nick1 = input("Digite o nick do jogador 1: ")
-        nick2 = input("Digite o nick do jogador 2: ")
-        jogador1 = [nick1,atributos()]
-        jogador2 = [nick2, atributos()]
-        print(jogador1)
-        print(jogador2)
+
         personagens += 1
     elif opcao == 2:
         verificar_jogador()
