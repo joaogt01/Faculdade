@@ -72,6 +72,8 @@ campo = [['A','A','A','A','A',' ',' ','A','A','A','A','A'],
 pokemons = ['ratata', 'pidgey', 'weedle', 'caterpie', 'paras', 'charmander', 'bulbasaur', 'squirtle', 'pikachu' , 'evee']
 pokedex = []
 jogador = campo[19][6]
+
+
 Partida = True
 print("entrando na rota 1")
 time.sleep(2)
